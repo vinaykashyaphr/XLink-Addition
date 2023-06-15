@@ -1,0 +1,67 @@
+<XlinkInputPopup>
+    title: "Xlink and URN addition"
+    size_hint: None, None
+    size: dp(600), dp(300)
+    auto_dismiss: False
+
+    BoxLayout:
+        orientation: 'vertical'
+        spacing: dp(10)
+        padding: (20, 10, 20, 10)
+
+        MDCard:
+            orientation: 'vertical'
+            padding: (10, 10, 10, 10)
+            spacing: dp(10)
+            md_bg_color: 0.15, 0.15, 0.15, 1
+
+            MDLabel:
+                id: input_textbox
+                text: 'Please drop your folder here'
+                font_size: 18
+                halign: "center"
+                bold: True
+                color: 0.6, 0.6, 0.6, 1
+
+        BoxLayout:
+            spacing: dp(15)
+            size_hint: 0.72, 0.4
+            pos_hint: {'right': 1}
+            padding: (10, 10, 10, 10)
+            canvas.before:
+                Color:
+                    rgba: 1, 0, 0, 0
+                Line:
+                    width:1
+                    rectangle: self.x, self.y, self.width, self.height
+
+            MDRectangleFlatButton:
+                text: 'Clear'
+                on_release:
+                    root.clear_input()
+
+            MDFillRoundFlatButton:
+                text: 'Add Xlink'
+                on_release:
+                    root.add_xlink()
+
+            MDFillRoundFlatButton:
+                text: 'Add URN'
+                on_release:
+                    root.add_urn()
+
+            MDFillRoundFlatButton:
+                text: 'Add both'
+                on_release:
+                    root.add_both()
+
+<Matter>
+    orientation: "horizontal"
+    spacing: dp(20)
+    size_hint: 0.4, 1
+    MDTextButton:
+        text: "Processing ... "
+        bold: True
+        font_size: 18
+        pos_hint: {'center_x': 0.7}
+        valign: "middle"
